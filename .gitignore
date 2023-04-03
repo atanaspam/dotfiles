@@ -1,0 +1,4 @@
+# Note that this file is only for my dotfiles repo. See .git_ignore for the global ignore file
+*~
+.zsh/history
+.DS_Store

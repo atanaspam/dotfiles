@@ -1,0 +1,55 @@
+[github]
+  user = atanaspam
+
+[core]
+  editor = vim
+  excludesfile = ~/.git_ignore # not .gitignore so that we mess with the dotfiles git repo
+  preloadindex = true
+
+[color]
+  ui = auto
+
+[color "diff"]
+  meta = 242 238
+  frag = 239 236
+  old = 167 normal
+  new = 030 normal
+  context = 240
+  commit = 246 024
+  # meta = yellow bold
+  # frag = magenta bold
+  # old = red bold
+  # new = green bold
+  # whitespace = red reverse
+
+[help]
+  autocorrect = 1
+
+[user]
+	name = Atanas Pamukchiev
+	email = atanaspam@users.noreply.github.com
+	signingkey = 0C74CBF51B65FE4F
+
+[diff]
+  tool                = vimdiff
+  algorithm           = histogram
+  compactionHeuristic = true
+
+[init]
+  defaultBranch = main
+
+[commit]
+  gpgsign = false
+  template = ~/.gitmessage
+
+[tag]
+  gpgsign = false
+
+[gpg]
+  program = gpg
+
+[url "https://"]
+  insteadOf = git://
+
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/

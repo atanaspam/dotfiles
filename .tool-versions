@@ -1,0 +1,14 @@
+terraform latest:1 # The latest minor version of 1.0.0
+
+awscli system
+azure-cli system
+azure-functions-core-tools system
+helm system
+kubectl system
+packer system
+pre-commit system
+tflint system
+tfsec system
+
+# Python 
+# python latest:3 latest:2 system # Try the latest minor version of 3.0.0, fallback to latest minor version of 2.0.0, and then fallback to system
