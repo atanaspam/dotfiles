@@ -19,8 +19,8 @@ alias racadm="docker run --rm -it racadm:latest racadm"
 ## shrug: ¯\_(ツ)_/¯
 alias shrug="echo '¯\_(ツ)_/¯' | pbcopy"
 
-## localip: Show local ip
-alias localip="ipconfig getifaddr en0"
+# ## localip: Show local ip
+# alias localip="ipconfig getifaddr en0"
 
 ## emoji: Show emoji keyboard
 alias emoji="Control + Command + Space"

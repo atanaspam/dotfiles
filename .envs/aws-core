@@ -1,0 +1,10 @@
+
+#!/usr/bin/env bash
+echo "Logging in to bitwarden in order to fetch AWS vars"
+session=$(bw login --raw)
+export BW_SESSION="$session"
+export AWS_ACCESS_KEY_ID=$(bw get item "AWS IAM Administrator" | jq --raw-output '.fields[] | select(.name == "Access Key ID") | .value')
+export AWS_SECRET_ACCESS_KEY=$(bw get item "AWS IAM Administrator" | jq --raw-output '.fields[] | select(.name == "Secret Access Key") | .value')
+export AWS_REGION="eu-central-1"
+bw logout
+echo "Done"

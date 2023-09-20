@@ -21,3 +21,25 @@ function urlencode {
 function urldecode {
 	python -c "import sys; from urllib.parse import unquote; print(unquote(sys.stdin.read()), end='')"
 }
+
+## localip: Show local ip
+function localip() {
+    local wifi=$(ipconfig getifaddr en0)
+    local docking_station=$(ipconfig getifaddr en7)
+    printf "💡 IP Addresses:\n"
+    printf "🛜 ${wifi}\n"
+    printf "🔌 ${docking_station}\n"
+}
+
+## dynamodb: Controls the local dynamodb instance
+dynamodb() {
+    if [ $# -lt 1 ]
+    then
+        echo "Usage: $funcstack[1] <up/down>"
+        return
+    fi
+
+    docker compose -f ~/bin/local-dynamodb-docker-compose.yml $1 --detach
+    echo "Dynamodb is now available at http://localhost:8000"
+    echo "You might want to run export DYNAMO_ENDPOINT=http://localhost:8000 and use dynamodb-admin"
+}

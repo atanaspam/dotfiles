@@ -22,3 +22,7 @@ export PATH=~/bin:/opt/homebrew/bin:$PATH
 export GOPATH=$HOME
 
 autoload -Uz +X compinit && compinit
+
+# Init GPG agent
+GPG_TTY=$(tty)
+export GPG_TTY

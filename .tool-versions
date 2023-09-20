@@ -11,4 +11,5 @@ tflint system
 tfsec system
 
 # Python 
+python system
 # python latest:3 latest:2 system # Try the latest minor version of 3.0.0, fallback to latest minor version of 2.0.0, and then fallback to system

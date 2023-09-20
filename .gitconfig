@@ -39,11 +39,11 @@
   defaultBranch = main
 
 [commit]
-  gpgsign = false
+	gpgsign = true
   template = ~/.gitmessage
 
 [tag]
-  gpgsign = false
+  gpgsign = true
 
 [gpg]
   program = gpg
@@ -53,3 +53,6 @@
 
 [url "ssh://git@github.com/"]
   insteadOf = https://github.com/
+  
+[push]
+	autoSetupRemote = true
