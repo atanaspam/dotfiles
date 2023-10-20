@@ -43,3 +43,13 @@ dynamodb() {
     echo "Dynamodb is now available at http://localhost:8000"
     echo "You might want to run export DYNAMO_ENDPOINT=http://localhost:8000 and use dynamodb-admin"
 }
+
+## openjira Open the specified jira key in the browser
+openjira() {
+    if [ $# -lt 1 ]
+    then
+        echo "Usage: $funcstack[1] <jira key>"
+        return
+    fi
+    open "https://jumbo-supermarkten.atlassian.net/browse/$1"
+}

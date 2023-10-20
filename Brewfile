@@ -1,6 +1,6 @@
 tap "sidneys/homebrew"
 tap "lotyp/homebrew-formulae"
-tap hashicorp/tap
+tap "hashicorp/tap"
 
 brew "act"
 brew "asdf"
