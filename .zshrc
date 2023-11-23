@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 #####################################################################
 ### Custom config start
 #####################################################################
@@ -29,6 +36,7 @@ zinit snippet OMZP::colorize
 zinit snippet OMZP::gitignore
 zinit snippet OMZP::asdf
 zinit snippet OMZP::kubectl
+zinit snippet https://raw.githubusercontent.com/ahmetb/kubectl-aliases/master/.kubectl_aliases
 # zinit load direnv/direnv
 zinit load rtakasuke/zsh-duration
 zinit load paulirish/git-open
@@ -68,6 +76,9 @@ source "$HOME/.zsh/10_inital.zsh"
 source "$HOME/.zsh/20_functions.zsh"
 source "$HOME/.zsh/30_aliases.zsh"
 source "$HOME/.zsh/40_exports.zsh"
-for f in $HOME/.zsh/*_secret*.zsh; do source $f; done
+# for f in $HOME/.zsh/*_secret*.zsh; do source $f; done
 source "$HOME/.zsh/80_visual.zsh"
 source "$HOME/.zsh/90_final.zsh"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

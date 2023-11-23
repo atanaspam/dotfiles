@@ -23,4 +23,7 @@ alias shrug="echo '¯\_(ツ)_/¯' | pbcopy"
 # alias localip="ipconfig getifaddr en0"
 
 ## emoji: Show emoji keyboard
-alias emoji="Control + Command + Space"
+alias emoji="echo Control + Command + Space"
+
+## ammend: Ammend the message of the last commit
+alias amend="git commit --amend -C HEAD"
