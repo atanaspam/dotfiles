@@ -10,16 +10,30 @@ function aliases() {
     | sort \
     | awk 'BEGIN {FS = ": "}; {printf "\033[36m%-30s\033[0m %s\n", $1, $2}'
 }
+# docs:ignore 
+function check_for_pre_commit() {
+    find ./.git/hooks -type f ! -name "*.sample" | grep . > /dev/null
+    hooks_exist=$?
+    find . -type f -name ".pre-commit-config.yaml" | grep . > /dev/null
+    pre_commit_file_exists=$?
+
+    if [[ $pre_commit_file_exists -eq 0 && $hooks_exist -ne 0 ]]; then
+        YELLOW='\x1b[33m'
+        RESET='\x1b[39m'
+        WHITE='\x1b[37m'
+        echo "$(tput bold)${YELLOW}Detected missing hooks.$(tput sgr0) Consider running $(tput bold)pre-commit install${RESET}"
+    fi
+}
 
 ## urlencode: url encode the input passed in stdin
 function urlencode {
-	python -c "import sys; from urllib.parse import quote_plus; print(quote_plus(sys.stdin.read()))"
+    python3 -c "import sys, urllib.parse as ul; print (ul.quote_plus(sys.stdin.read()[:-1]))"
 }
 
 
 ## urldecode: url decode the input passed in stdin
 function urldecode {
-	python -c "import sys; from urllib.parse import unquote; print(unquote(sys.stdin.read()), end='')"
+	python3 -c "import sys; from urllib.parse import unquote; print(unquote(sys.stdin.read()), end='')"
 }
 
 ## localip: Show local ip
