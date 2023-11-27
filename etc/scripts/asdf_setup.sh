@@ -11,6 +11,7 @@ asdf plugin-add terraform-docs
 asdf plugin-add terraform
 asdf plugin-add tflint
 asdf plugin-add tfsec
+asdf plugin-add nodejs
 # asdf plugin-add direnv
 # asdf direnv setup --shell zsh --version system
 

@@ -45,17 +45,26 @@ function localip() {
     printf "🔌 ${docking_station}\n"
 }
 
-## dynamodb: Controls the local dynamodb instance
+## dynamodb: Spins up and down a local DynamoDB instance
 dynamodb() {
-    if [ $# -lt 1 ]
-    then
+    if [ "$1" = "up" ]; then
+        current_status=$(docker compose -f ~/bin/local-dynamodb-docker-compose.yml ps --format json | jq '.[].State')
+        if [ "$current_status" = '"running"' ]; then
+            export DYNAMO_ENDPOINT=http://localhost:8000
+            echo "DynamoDB is already running. DYNAMO_ENDPOINT еnv var is now set to "http://localhost:8000""
+        else 
+            docker compose -f ~/bin/local-dynamodb-docker-compose.yml $1 --detach
+            export DYNAMO_ENDPOINT=http://localhost:8000
+            echo "DynamoDB is now available at http://localhost:8000"
+            echo "DynamoDB Admin is available at http://localhost:8001"
+        fi
+    elif [ "$1" = "down" ]; then
+        docker compose -f ~/bin/local-dynamodb-docker-compose.yml $1
+        echo "DynamoDB has been stopped"
+    else
         echo "Usage: $funcstack[1] <up/down>"
-        return
-    fi
 
-    docker compose -f ~/bin/local-dynamodb-docker-compose.yml $1 --detach
-    echo "Dynamodb is now available at http://localhost:8000"
-    echo "You might want to run export DYNAMO_ENDPOINT=http://localhost:8000 and use dynamodb-admin"
+    fi
 }
 
 ## openjira Open the specified jira key in the browser

@@ -29,6 +29,7 @@ brew "cdrtools" # Required for UTM UUP converter
 brew "sidneys/homebrew/chntpw" # Required for UTM UUP converter
 brew "hashicorp/tap/packer"
 brew "ddpm"
+brew "pre-commit"
 
 cask "iterm2"
 cask "burp-suite"
@@ -46,3 +47,4 @@ cask "visual-studio-code"
 cask "utm"
 cask "spotify"
 cask "intellij-idea-ce"
+cask "microsoft-teams"
