@@ -38,8 +38,8 @@ function urldecode {
 
 ## localip: Show local ip
 function localip() {
-    local wifi=$(ipconfig getifaddr en0)
-    local docking_station=$(ipconfig getifaddr en7)
+    local wifi=$(ipconfig getifaddr $(networksetup -listallhardwareports | awk '/Hardware Port: Wi-Fi/{getline; print $2}'))
+    local docking_station=$(ipconfig getifaddr $(networksetup -listallhardwareports | awk '/Hardware Port: Thunderbolt Ethernet Slot 2/{getline; print $2}'))
     printf "💡 IP Addresses:\n"
     printf "🛜 ${wifi}\n"
     printf "🔌 ${docking_station}\n"
@@ -67,7 +67,7 @@ dynamodb() {
     fi
 }
 
-## openjira Open the specified jira key in the browser
+## openjira: Open the specified jira key in the browser
 openjira() {
     if [ $# -lt 1 ]
     then
@@ -75,4 +75,16 @@ openjira() {
         return
     fi
     open "https://jumbo-supermarkten.atlassian.net/browse/$1"
+}
+
+## loadenv: Load the contents of the .env in the current directory into the shell session
+function loadenv() {
+    if [ -f .env ]; then
+        env_vars=$(sed -n 's/export \([^=]*\)=.*/\1/p' .env | tr '\n' ' ')
+        source .env
+        echo "Loaded $env_vars"
+    else
+        echo 'No .env file found' 1>&2
+        return 1
+    fi
 }

@@ -31,11 +31,10 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 zinit snippet OMZP::sublime
 zinit snippet OMZP::pip
 zinit snippet OMZP::git
-zinit ice svn; zinit snippet OMZP::macos
+zinit ice svn; zinit snippet OMZ::plugins/macos
 zinit snippet OMZP::colorize
 zinit snippet OMZP::gitignore
 zinit snippet OMZP::asdf
-zinit snippet OMZP::kubectl
 zinit snippet https://raw.githubusercontent.com/ahmetb/kubectl-aliases/master/.kubectl_aliases
 # zinit load direnv/direnv
 zinit load rtakasuke/zsh-duration

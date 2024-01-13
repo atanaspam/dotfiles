@@ -30,6 +30,7 @@ brew "sidneys/homebrew/chntpw" # Required for UTM UUP converter
 brew "hashicorp/tap/packer"
 brew "ddpm"
 brew "pre-commit"
+brew "svn" # Required for zinit macos. Remove when they support git
 
 cask "iterm2"
 cask "burp-suite"
@@ -48,3 +49,5 @@ cask "utm"
 cask "spotify"
 cask "intellij-idea-ce"
 cask "microsoft-teams"
+cask "rectangle"
+cask "caldigit-docking-utility"

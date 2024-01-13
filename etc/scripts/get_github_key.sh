@@ -9,9 +9,9 @@ case "$choice" in
   n|N ) exit 0;;
   * ) echo "invalid";;
 esac
-echo -n "Enter account  : "
+echo -n "Enter account: "
 read BW_ACCOUNT
-echo -n "Enter password : "
+echo -n "Enter password: "
 read -s BW_PASS
 echo
 export BW_SESSION=$(bw login $BW_ACCOUNT $BW_PASS --raw)
