@@ -36,13 +36,15 @@ function urldecode {
 	python3 -c "import sys; from urllib.parse import unquote; print(unquote(sys.stdin.read()), end='')"
 }
 
-## localip: Show local ip
-function localip() {
+## checkip: Show current ip addresses
+function checkip() {
     local wifi=$(ipconfig getifaddr $(networksetup -listallhardwareports | awk '/Hardware Port: Wi-Fi/{getline; print $2}'))
     local docking_station=$(ipconfig getifaddr $(networksetup -listallhardwareports | awk '/Hardware Port: Thunderbolt Ethernet Slot 2/{getline; print $2}'))
+    local public=$(curl http://checkip.amazonaws.com)
     printf "💡 IP Addresses:\n"
     printf "🛜 ${wifi}\n"
     printf "🔌 ${docking_station}\n"
+    printf "🌍🔌 ${public}\n"
 }
 
 ## dynamodb: Spins up and down a local DynamoDB instance
@@ -87,4 +89,24 @@ function loadenv() {
         echo 'No .env file found' 1>&2
         return 1
     fi
+}
+
+## secret: Encrypt the contents of the input file. Usage: secret <input_file_name>
+secret () {
+        output=~/"${1}".$(date +%s).enc
+        gpg --encrypt --armor --output ${output} -r 0x0000 -r 0x0001 -r 0x0002 "${1}" && echo "${1} -> ${output}"
+}
+
+## reveal: Decrypt the contents of the input file. Usage: reveal <input_file_name>
+reveal () {
+        output=$(echo "${1}" | rev | cut -c16- | rev)
+        gpg --decrypt --output ${output} "${1}" && echo "${1} -> ${output}"
+}
+
+# docs:ignore
+function _init_gpg_ssh_agent {
+  export GPG_TTY=$(tty)
+  unset SSH_AGENT_PID
+  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+  echo UPDATESTARTUPTTY | gpg-connect-agent > /dev/null
 }

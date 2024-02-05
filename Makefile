@@ -2,7 +2,7 @@ DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 CANDIDATES := $(wildcard .??*) bin
 EXCLUSIONS := .DS_Store .git .gitmodules
 DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
-BREW_BIN := $(HOMEBREW_PREFIX)/bin/brew
+BREW_BIN   := /opt/homebrew/bin/brew
 
 .DEFAULT_GOAL := help
 
@@ -16,7 +16,7 @@ brew: ## Install brew and run brew bundle
 	@-$(BREW_BIN) bundle
 
 app_setup: ## Set up all applications
-	@sh ./etc/scripts/get_github_key.sh
+	@sh ./etc/scripts/get_keys.sh
 	@sh ./etc/scripts/asdf_setup.sh
 	@sh ./etc/scripts/code_setup.sh
 	@sh ./etc/scripts/macos_setup.sh
