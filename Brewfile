@@ -28,9 +28,10 @@ brew "wimlib" # Required for UTM UUP converter
 brew "cdrtools" # Required for UTM UUP converter
 brew "sidneys/homebrew/chntpw" # Required for UTM UUP converter
 brew "hashicorp/tap/packer"
-brew "ddpm"
 brew "pre-commit"
 brew "svn" # Required for zinit macos. Remove when they support git
+brew "7-zip"
+brew "grip"
 
 cask "iterm2"
 cask "burp-suite"
@@ -39,7 +40,7 @@ cask "db-browser-for-sqlite"
 cask "drawio"
 cask "firefox"
 cask "google-chrome"
-cask "gpg-suite"
+cask "gpg-suite-no-mail"
 cask "mactex"
 cask "postman"
 cask "slack"
@@ -51,3 +52,4 @@ cask "intellij-idea-ce"
 cask "microsoft-teams"
 cask "rectangle"
 cask "caldigit-docking-utility"
+cask "ddpm"

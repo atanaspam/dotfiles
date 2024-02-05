@@ -1,2 +1,1 @@
-# # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export KEYID=0x946281F6D65DA66F
