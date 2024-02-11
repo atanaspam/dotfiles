@@ -29,7 +29,7 @@ alias emoji="echo Control(⌃) + ⌘ + Space"
 alias amend="git commit --amend -C HEAD"
 
 ## tm: Show ™ sign
-alias tm="echo ⌥ + fn + 2 = ™" 
+alias tm="echo ⌥ + fn + 2 = ™"
 
 ## reload: reload the current shell with the latest .zprofile, .zshrc config
 alias reload="exec zsh"

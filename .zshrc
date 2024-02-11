@@ -31,7 +31,8 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 zinit snippet OMZP::sublime
 zinit snippet OMZP::pip
 zinit snippet OMZP::git
-zinit ice svn; zinit snippet OMZ::plugins/macos
+# The snippet below is a temp fix that replaces zinit ice svn; zinit snippet OMZ::plugins/macos
+zinit snippet https://gist.githubusercontent.com/atanaspam/b43be6c483893bfe411764f3c6902ff7/raw/
 zinit snippet OMZP::colorize
 zinit snippet OMZP::gitignore
 zinit snippet OMZP::asdf
@@ -61,7 +62,6 @@ zinit fpath -f /opt/homebrew/share/zsh/site-functions
 autoload compinit; compinit # should this go in zprofile?
 
 zinit cdreplay -q
-
 
 # config for ZSH Plugins
 # zsh-history-substring-search

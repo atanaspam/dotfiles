@@ -35,7 +35,7 @@ echo -n "Paste in the GPG Key ID for this device"
 read -s GPG_KEY_ID
 # https://stackoverflow.com/a/40027637
 GITHUB_KEY_SECRET_NAME=$(bw get item "PGP" | jq --arg GPG_KEY_ID "$GPG_KEY_ID" --raw-output '.attachments[] | select(.fileName | startswith("$GPG_KEY_ID")) .fileName')
-bw get attachment $GITHUB_KEY_SECRET_NAME --itemid $PUB_KEY_SECRET_ID --output /tmp/$GITHUB_KEY_SECRET_NAME 
+bw get attachment $GITHUB_KEY_SECRET_NAME --itemid $PUB_KEY_SECRET_ID --output /tmp/$GITHUB_KEY_SECRET_NAME
 gpg --import /tmp/$GITHUB_KEY_SECRET_NAME
 rm /tmp/$GITHUB_KEY_SECRET_NAME
 bw logout
@@ -46,7 +46,7 @@ if [ -f ~/.ssh/id_ed25519_github ]; then
 else
   echo "About to generate new GitHub SSH key"
   read -p "Continue (y/n)?" choice
-  case "$choice" in 
+  case "$choice" in
     y|Y ) echo "yes";;
     n|N ) exit 0;;
     * ) echo "invalid";;

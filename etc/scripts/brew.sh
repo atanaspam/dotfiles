@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 if command -v brew &>/dev/null; then
   echo "${0}: brew is already installed"
