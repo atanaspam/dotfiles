@@ -28,7 +28,7 @@
 [user]
 	name = Atanas Pamukchiev
 	email = atanaspam@users.noreply.github.com
-	signingKey = 0x6335BBA2F5B07EFA!
+	signingKey = 0xDAB84DF316DD590D!
 
 [diff]
   tool                = vimdiff

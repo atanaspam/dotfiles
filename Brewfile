@@ -32,6 +32,7 @@ brew "pre-commit"
 brew "svn" # Required for zinit macos. Remove when they support git
 brew "7-zip"
 brew "grip"
+brew "pinentry-mac"
 
 cask "iterm2"
 cask "burp-suite"
