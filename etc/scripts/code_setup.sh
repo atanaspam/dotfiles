@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 eval "$(/opt/homebrew/bin/brew shellenv)" # TODO: Needs to be in every script that depends on tools installed by brew
 

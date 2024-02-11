@@ -1,6 +1,6 @@
 DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 CANDIDATES := $(wildcard .??*) bin
-EXCLUSIONS := .DS_Store .git .gitmodules
+EXCLUSIONS := .DS_Store .git .gitmodules .github
 DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 BREW_BIN   := /opt/homebrew/bin/brew
 

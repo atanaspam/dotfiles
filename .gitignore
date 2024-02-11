@@ -6,3 +6,7 @@ bin/docker/dynamodb
 .gnupg/**
 !.gnupg/*.conf
 !.gnupg/sshcontrol
+
+#.aws
+.aws/**
+!.aws/config

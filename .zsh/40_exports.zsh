@@ -16,5 +16,7 @@ export ASDF_HASHICORP_TERRAFORM_VERSION_FILE="versions.tf"
 # zsh-duration
 export ZSH_DURATION_THRESHOLD=70
 
+export KEYID=0x946281F6D65DA66F
+
 # This should be the last line:
 export PATH
