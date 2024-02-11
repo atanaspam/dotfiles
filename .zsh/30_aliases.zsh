@@ -33,3 +33,6 @@ alias tm="echo ⌥ + fn + 2 = ™"
 
 ## reload: reload the current shell with the latest .zprofile, .zshrc config
 alias reload="exec zsh"
+
+## learn_yubikey: Learns all GPG keys stored in the currently plugged Yubikey.
+alias learn_yubikey='gpg-connect-agent "scd serialno" "learn --force" /bye'

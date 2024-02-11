@@ -1,11 +1,9 @@
-#!/usr/bin/env bash
+#!/bin/bash
+set -e
 
 eval "$(/opt/homebrew/bin/brew shellenv)" # TODO: Needs to be in every script
 
 echo "Configuring GNUPG"
-mkdir -p ~/.gnupg
-curl https://raw.githubusercontent.com/drduh/config/master/gpg.conf -o ~/.gnupg/gpg.conf
-chmod 600 ~/.gnupg/gpg.conf
 chown -R $(whoami) ~/.gnupg/
 
 bw config server https://vault.bitwarden.eu > /dev/null
@@ -33,7 +31,10 @@ echo "About to trust PGP key. Your input is required. Select '5'."
 gpg --edit-key $PUB_KEY_ID trust
 
 echo "Setting up GitHub GPG key"
-GITHUB_KEY_SECRET_NAME=$(bw get item "PGP" | jq --raw-output '.attachments[] | select(.fileName | startswith("github")) .fileName')
+echo -n "Paste in the GPG Key ID for this device"
+read -s GPG_KEY_ID
+# https://stackoverflow.com/a/40027637
+GITHUB_KEY_SECRET_NAME=$(bw get item "PGP" | jq --arg GPG_KEY_ID "$GPG_KEY_ID" --raw-output '.attachments[] | select(.fileName | startswith("$GPG_KEY_ID")) .fileName')
 bw get attachment $GITHUB_KEY_SECRET_NAME --itemid $PUB_KEY_SECRET_ID --output /tmp/$GITHUB_KEY_SECRET_NAME 
 gpg --import /tmp/$GITHUB_KEY_SECRET_NAME
 rm /tmp/$GITHUB_KEY_SECRET_NAME
@@ -50,7 +51,7 @@ else
     n|N ) exit 0;;
     * ) echo "invalid";;
   esac
-  ssh-keygen -t ed25519 -C "atanaspam@users.noreply.github.com" -f ~/.ssh/id_ed25519_github
+  ssh-keygen -t ed25519 -C "$(git config --get github.user)@users.noreply.github.com" -f ~/.ssh/id_ed25519_github
   eval "$(ssh-agent -s)"
   ssh-add --apple-use-keychain ~/.ssh/id_ed25519_github
   echo "See https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account"

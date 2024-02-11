@@ -6,30 +6,15 @@ function aliases() {
     | sort \
     | awk 'BEGIN {FS = ": "}; {printf "\033[36m%-30s\033[0m %s\n", $1, $2}'
     printf "💡 Functions:\n"
-    grep -E '^## .*$$' ~/.zsh/20_functions.zsh \
+    grep -E '^## .*$$' ~/.zsh/21_functions.zsh \
     | sort \
     | awk 'BEGIN {FS = ": "}; {printf "\033[36m%-30s\033[0m %s\n", $1, $2}'
-}
-# docs:ignore 
-function check_for_pre_commit() {
-    find ./.git/hooks -type f ! -name "*.sample" | grep . > /dev/null
-    hooks_exist=$?
-    find . -type f -name ".pre-commit-config.yaml" | grep . > /dev/null
-    pre_commit_file_exists=$?
-
-    if [[ $pre_commit_file_exists -eq 0 && $hooks_exist -ne 0 ]]; then
-        YELLOW='\x1b[33m'
-        RESET='\x1b[39m'
-        WHITE='\x1b[37m'
-        echo "$(tput bold)${YELLOW}Detected missing hooks.$(tput sgr0) Consider running $(tput bold)pre-commit install${RESET}"
-    fi
 }
 
 ## urlencode: url encode the input passed in stdin
 function urlencode {
     python3 -c "import sys, urllib.parse as ul; print (ul.quote_plus(sys.stdin.read()[:-1]))"
 }
-
 
 ## urldecode: url decode the input passed in stdin
 function urldecode {
@@ -40,11 +25,17 @@ function urldecode {
 function checkip() {
     local wifi=$(ipconfig getifaddr $(networksetup -listallhardwareports | awk '/Hardware Port: Wi-Fi/{getline; print $2}'))
     local docking_station=$(ipconfig getifaddr $(networksetup -listallhardwareports | awk '/Hardware Port: Thunderbolt Ethernet Slot 2/{getline; print $2}'))
-    local public=$(curl http://checkip.amazonaws.com)
+    local public=$(curl -s http://checkip.amazonaws.com)
     printf "💡 IP Addresses:\n"
-    printf "🛜 ${wifi}\n"
-    printf "🔌 ${docking_station}\n"
-    printf "🌍🔌 ${public}\n"
+    if [[ ! ${wifi} = "" ]]; then
+        printf "🛜  ${wifi}\n"
+    fi
+     if [[ ! ${docking_station} = "" ]]; then
+        printf "🔌  ${docking_station}\n"
+    fi
+     if [[ ! ${public} = "" ]]; then
+        printf "🌍 ${public}\n"
+    fi
 }
 
 ## dynamodb: Spins up and down a local DynamoDB instance

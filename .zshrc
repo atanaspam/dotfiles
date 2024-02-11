@@ -58,24 +58,23 @@ zinit ice \
 zinit light zdharma-continuum/null
 
 zinit fpath -f /opt/homebrew/share/zsh/site-functions
-autoload compinit; compinit
+autoload compinit; compinit # should this go in zprofile?
 
 zinit cdreplay -q
 
 
 # config for ZSH Plugins
-# zsh-duration
-export ZSH_DURATION_THRESHOLD=70
 # zsh-history-substring-search
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-# endconfig for ZSH Plugins
+# end config for ZSH Plugins
 
 source "$HOME/.zsh/10_inital.zsh"
-source "$HOME/.zsh/20_functions.zsh"
+source "$HOME/.zsh/20_functions_internal.zsh"
+source "$HOME/.zsh/21_functions.zsh"
 source "$HOME/.zsh/30_aliases.zsh"
 source "$HOME/.zsh/40_exports.zsh"
-# for f in $HOME/.zsh/*_secret*.zsh; do source $f; done
+for f in $HOME/.zsh/*_secret*.zsh; do source $f; done
 source "$HOME/.zsh/80_visual.zsh"
 source "$HOME/.zsh/90_final.zsh"
 
