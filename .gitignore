@@ -3,6 +3,8 @@
 .zsh/history
 .DS_Store
 bin/docker/dynamodb
+
+#.gnupg
 .gnupg/**
 !.gnupg/*.conf
 !.gnupg/sshcontrol
@@ -10,3 +12,7 @@ bin/docker/dynamodb
 #.aws
 .aws/**
 !.aws/config
+
+#.ssh
+.ssh/**
+!.ssh/config
