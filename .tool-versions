@@ -9,7 +9,7 @@ packer system
 pre-commit system
 tflint system
 tfsec system
-nodejs 20.9.0
+nodejs 20.9.0 18.19.0
 pre-commit system
 
 # Python 

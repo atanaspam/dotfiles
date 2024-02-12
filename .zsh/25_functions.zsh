@@ -60,12 +60,12 @@ dynamodb() {
 }
 
 ## openjira: Open the specified jira key in the browser
-openjira() {
+openjira_personal() {
   if [ $# -lt 1 ]; then
     echo "Usage: $funcstack[1] <jira key>"
     return
   fi
-  open "https://jumbo-supermarkten.atlassian.net/browse/$1"
+  open "https://atanaspam.atlassian.net/browse/$1"
 }
 
 ## loadenv: Load the contents of the .env in the current directory into the shell session
@@ -81,13 +81,13 @@ function loadenv() {
 }
 
 ## secret: Encrypt the contents of the input file. Usage: secret <input_file_name>
-secret () {
+function secret () {
   output=~/"${1}".$(date +%s).enc
   gpg --encrypt --armor --output ${output} -r 0x0000 -r 0x0001 -r 0x0002 "${1}" && echo "${1} -> ${output}"
 }
 
 ## reveal: Decrypt the contents of the input file. Usage: reveal <input_file_name>
-reveal () {
+function reveal () {
   output=$(echo "${1}" | rev | cut -c16- | rev)
   gpg --decrypt --output ${output} "${1}" && echo "${1} -> ${output}"
 }

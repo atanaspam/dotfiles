@@ -70,11 +70,11 @@ bindkey '^[[B' history-substring-search-down
 # end config for ZSH Plugins
 
 source "$HOME/.zsh/10_inital.zsh"
+for f in $HOME/.zsh/*_secret*.zsh; do source $f; done
 source "$HOME/.zsh/20_functions_internal.zsh"
-source "$HOME/.zsh/21_functions.zsh"
+source "$HOME/.zsh/25_functions.zsh"
 source "$HOME/.zsh/30_aliases.zsh"
 source "$HOME/.zsh/40_exports.zsh"
-for f in $HOME/.zsh/*_secret*.zsh; do source $f; done
 source "$HOME/.zsh/80_visual.zsh"
 source "$HOME/.zsh/90_final.zsh"
 
