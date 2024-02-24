@@ -36,3 +36,5 @@ alias reload="exec zsh"
 
 ## learn_yubikey: Learns all GPG keys stored in the currently plugged Yubikey.
 alias learn_yubikey='gpg-connect-agent "scd serialno" "learn --force" /bye'
+
+alias reload_gpg_agent='gpgconf --kill gpg-agent'
