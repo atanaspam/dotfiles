@@ -91,11 +91,3 @@ function reveal () {
   output=$(echo "${1}" | rev | cut -c16- | rev)
   gpg --decrypt --output ${output} "${1}" && echo "${1} -> ${output}"
 }
-
-# docs:ignore
-function _init_gpg_ssh_agent {
-  export GPG_TTY=$(tty)
-  unset SSH_AGENT_PID
-  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-  echo UPDATESTARTUPTTY | gpg-connect-agent > /dev/null
-}
