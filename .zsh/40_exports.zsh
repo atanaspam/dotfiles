@@ -16,7 +16,16 @@ export ASDF_HASHICORP_TERRAFORM_VERSION_FILE="versions.tf"
 # zsh-duration
 export ZSH_DURATION_THRESHOLD=70
 
-export KEYID=0x946281F6D65DA66F
+export GPG_KEYID=0x946281F6D65DA66F
+
+# Usuful stuff for coloring terminal output
+export BOLD=$(tput bold)
+export RED=$(tput setaf 1)
+export GREEN=$(tput setaf 2)
+export YELLOW=$(tput setaf 3)
+export BLUE=$(tput setaf 4)
+export MAGENTA=$(tput setaf 5)
+export RESET=$(tput sgr0)
 
 # This should be the last line:
 export PATH

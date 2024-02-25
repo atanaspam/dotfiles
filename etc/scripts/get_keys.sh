@@ -55,4 +55,5 @@ else
   eval "$(ssh-agent -s)"
   ssh-add --apple-use-keychain ~/.ssh/id_ed25519_github
   echo "See https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account"
+  open "https://github.com/settings/ssh/new"
 fi

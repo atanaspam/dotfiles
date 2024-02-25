@@ -16,6 +16,8 @@ dockutil --no-restart --add "/System/Applications/System Settings.app"
 
 killall Dock
 
+# https://macos-defaults.com/
+
 # Menu bar: show battery percentage
 defaults write com.apple.menuextra.battery ShowPercent YES
 
@@ -36,3 +38,6 @@ defaults write com.Apple.Dock show-recents -bool false
 
 # Week starts on monday
 defaults write com.apple.iCal "first day of week" -int 1
+
+# Set Activity Monitor icon to be showing CPU Usage over time
+defaults write com.apple.ActivityMonitor "IconType" -int "6"
