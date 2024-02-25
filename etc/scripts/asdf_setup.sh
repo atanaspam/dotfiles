@@ -12,6 +12,7 @@ asdf plugin-add terraform
 asdf plugin-add tflint
 asdf plugin-add tfsec
 asdf plugin-add nodejs
+asdf plugin-add parliament https://github.com/amrox/asdf-pyapp.git
 # asdf plugin-add direnv
 # asdf direnv setup --shell zsh --version system
 

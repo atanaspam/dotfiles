@@ -28,7 +28,7 @@
 [user]
 	name = Atanas Pamukchiev
 	email = atanaspam@users.noreply.github.com
-	signingKey = 0xDAB84DF316DD590D!
+	signingKey = 0x946281F6D65DA66F
 
 [diff]
   tool                = vimdiff
@@ -53,6 +53,6 @@
 
 [url "ssh://git@github.com/"]
   insteadOf = https://github.com/
-  
+
 [push]
 	autoSetupRemote = true
