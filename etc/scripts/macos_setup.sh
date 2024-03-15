@@ -41,3 +41,9 @@ defaults write com.apple.iCal "first day of week" -int 1
 
 # Set Activity Monitor icon to be showing CPU Usage over time
 defaults write com.apple.ActivityMonitor "IconType" -int "6"
+
+# Keyboard: How quickly are key presses repeated on initial key hold
+defaults write -g InitialKeyRepeat -int 20 # default is 30
+
+# Keyboard: How quickly are key presses repeated on key hold
+defaults write -g KeyRepeat -int 2
