@@ -6,7 +6,7 @@ function aliases() {
   | sort \
   | awk 'BEGIN {FS = ": "}; {printf "\033[36m%-30s\033[0m %s\n", $1, $2}'
   printf "💡 Functions:\n"
-  grep -E '^## .*$$' ~/.zsh/21_functions.zsh \
+  grep -E '^## .*$$' ~/.zsh/*functions.zsh \
   | sort \
   | awk 'BEGIN {FS = ": "}; {printf "\033[36m%-30s\033[0m %s\n", $1, $2}'
 }

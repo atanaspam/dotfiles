@@ -16,3 +16,7 @@ bin/docker/dynamodb
 #.ssh
 .ssh/**
 !.ssh/config
+
+# bin
+bin/gopls
+bin/staticcheck

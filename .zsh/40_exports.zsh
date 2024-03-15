@@ -27,5 +27,7 @@ export BLUE=$(tput setaf 4)
 export MAGENTA=$(tput setaf 5)
 export RESET=$(tput sgr0)
 
+export AWS_PROFILE=""
+
 # This should be the last line:
 export PATH
