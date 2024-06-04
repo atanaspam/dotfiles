@@ -39,3 +39,6 @@ alias learn_yubikey='gpg-connect-agent "scd serialno" "learn --force" /bye'
 
 ## reload_gpg_agent: Reloads the GPG agent in case its stuck
 alias reload_gpg_agent='gpgconf --kill gpg-agent'
+
+## reload_dns: reload the DNS cache
+alias reload_dns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"

@@ -20,3 +20,7 @@ bin/docker/dynamodb
 # bin
 bin/gopls
 bin/staticcheck
+
+# etc
+etc/scripts/backup*
+etc/scripts/restore*
