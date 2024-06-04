@@ -1,8 +1,8 @@
 # For each alias in this list add a comment above it starting with two hashes ## to contain the documentation for it.
 # If you want to hide an alias from the help command just add no comments or prefix the comment with a single hash.
 
-## help: Print the list of aliases and their descriptions
-alias help="aliases"
+# ## help: Print the list of aliases and their descriptions
+alias help="print_help"
 
 ## projects: Take me to the projects dir
 alias projects="cd ~/projects"
@@ -23,7 +23,7 @@ alias shrug="echo '¯\_(ツ)_/¯' | pbcopy"
 # alias localip="ipconfig getifaddr en0"
 
 ## emoji: Show emoji keyboard
-alias emoji="echo Control(⌃) + ⌘ + Space"
+alias emoji="echo 'Control(⌃) + ⌘ + Space'"
 
 ## ammend: Ammend the message of the last commit
 alias amend="git commit --amend -C HEAD"

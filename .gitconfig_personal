@@ -1,0 +1,7 @@
+[user]
+	name = Atanas Pamukchiev
+	email = atanaspam@users.noreply.github.com
+	signingKey = 0x946281F6D65DA66F
+
+[gpg]
+  program = gpg

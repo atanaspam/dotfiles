@@ -2,17 +2,17 @@ terraform latest:1 # The latest minor version of 1.0.0
 
 awscli system
 azure-cli system
-azure-functions-core-tools system
 helm system
-kubectl system
+kubectl 1.27.12
 packer system
 pre-commit system
 tflint system
 tfsec system
-nodejs 20.9.0 18.19.0
+nodejs 18.19.0 20.9.0
 pre-commit system
 parliament 1.6.2
 
 # Python
 python system
 # python latest:3 latest:2 system # Try the latest minor version of 3.0.0, fallback to latest minor version of 2.0.0, and then fallback to system
+gcloud 465.0.0

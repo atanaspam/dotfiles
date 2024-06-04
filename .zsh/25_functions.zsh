@@ -1,12 +1,21 @@
+# docs:ignore
+function print_help() {
+  aliases_list
+  functions_list
+  }
 
 # docs:ignore
-function aliases() {
+function aliases_list() {
   printf "💡 Aliases:\n"
   grep -E '^## .*$$' ~/.zsh/30_aliases.zsh \
   | sort \
   | awk 'BEGIN {FS = ": "}; {printf "\033[36m%-30s\033[0m %s\n", $1, $2}'
+}
+
+# docs:ignore
+function functions_list() {
   printf "💡 Functions:\n"
-  grep -E '^## .*$$' ~/.zsh/*functions.zsh \
+  grep --no-filename -E '^## .*$$' ~/.zsh/*functions*.zsh \
   | sort \
   | awk 'BEGIN {FS = ": "}; {printf "\033[36m%-30s\033[0m %s\n", $1, $2}'
 }
