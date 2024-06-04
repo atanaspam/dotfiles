@@ -25,11 +25,6 @@
 [help]
   autocorrect = 1
 
-[user]
-	name = Atanas Pamukchiev
-	email = atanaspam@users.noreply.github.com
-	signingKey = 0x946281F6D65DA66F
-
 [diff]
   tool                = vimdiff
   algorithm           = histogram
@@ -39,20 +34,23 @@
   defaultBranch = main
 
 [commit]
-	gpgsign = true
+  gpgsign = true
   template = ~/.gitmessage
 
 [tag]
   gpgsign = true
 
-[gpg]
-  program = gpg
-
 [url "https://"]
   insteadOf = git://
 
-[url "ssh://git@github.com/"]
+[url "git@github.com:"]
   insteadOf = https://github.com/
 
 [push]
 	autoSetupRemote = true
+
+[include]
+  path = ~/.gitconfig_personal
+
+[includeIf "gitdir:~/projects/work/"]
+  path = ~/.gitconfig_work
