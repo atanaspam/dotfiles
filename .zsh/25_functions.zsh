@@ -32,18 +32,21 @@ function urldecode {
 
 ## checkip: Show current ip addresses
 function checkip() {
-  local wifi=$(ipconfig getifaddr $(networksetup -listallhardwareports | awk '/Hardware Port: Wi-Fi/{getline; print $2}'))
-  local docking_station=$(ipconfig getifaddr $(networksetup -listallhardwareports | awk '/Hardware Port: Thunderbolt Ethernet Slot 2/{getline; print $2}'))
   local public=$(curl -s http://checkip.amazonaws.com)
-  printf "💡 IP Addresses:\n"
-  if [[ ! ${wifi} = "" ]]; then
-    printf "🛜  ${wifi}\n"
-  fi
-  if [[ ! ${docking_station} = "" ]]; then
-    printf "🔌  ${docking_station}\n"
-  fi
+  printf "💡  IP Addresses:\n"
+  local interfaces=$(networksetup -listallhardwareports | grep "Device: " |  awk -F' ' '{print $2}')
+  while IFS= read -r line; do
+    local address=$(ipconfig getifaddr $line)
+    if [[ ! ${address} = "" ]]; then
+      if [[ $line = "en0" ]]; then
+        printf "🛜  ${address}\n"
+      else
+        printf "🔌  ${address}\n"
+      fi
+    fi
+  done <<< "$interfaces"
   if [[ ! ${public} = "" ]]; then
-    printf "🌍 ${public}\n"
+    printf "🌍  ${public}\n"
   fi
 }
 
