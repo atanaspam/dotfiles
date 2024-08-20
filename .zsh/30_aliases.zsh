@@ -45,4 +45,3 @@ alias awsprofiles="aws configure list-profiles"
 
 alias awslogin="awsauth"
 
-alias cdk="~/playgrounds/aws-cdk/packages/aws-cdk/bin/cdk"
