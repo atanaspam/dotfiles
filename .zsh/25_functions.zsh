@@ -92,6 +92,15 @@ function loadenv() {
   fi
 }
 
+## awsauth: Logs in using AWS SSO and the specified session name
+function awsauth() {
+  if [ $# -lt 1 ]; then
+    echo "Usage: $funcstack[1] <sso-session-name>"
+    return
+  fi
+  aws sso login --sso-session $1 --profile login
+}
+
 ## secret: Encrypt the contents of the input file. Usage: secret <input_file_name>
 function secret () {
   output=~/"${1}".$(date +%s).enc

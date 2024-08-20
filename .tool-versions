@@ -11,8 +11,8 @@ tfsec system
 nodejs 18.19.0 20.9.0
 pre-commit system
 parliament 1.6.2
+gcloud 487.0.0 # If you update this version, don't forget to update 35_completions.zsh
 
 # Python
 python system
 # python latest:3 latest:2 system # Try the latest minor version of 3.0.0, fallback to latest minor version of 2.0.0, and then fallback to system
-gcloud 465.0.0

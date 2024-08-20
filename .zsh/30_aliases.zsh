@@ -4,10 +4,10 @@
 # ## help: Print the list of aliases and their descriptions
 alias help="print_help"
 
-## projects: Take me to the projects dir
+# projects: Take me to the projects dir
 alias projects="cd ~/projects"
 
-## playgrounds: Take me to the playgrounds dir
+# playgrounds: Take me to the playgrounds dir
 alias playgrounds="cd ~/playgrounds"
 
 # docs:ignore
@@ -18,9 +18,6 @@ alias racadm="docker run --rm -it racadm:latest racadm"
 
 ## shrug: ¯\_(ツ)_/¯
 alias shrug="echo '¯\_(ツ)_/¯' | pbcopy"
-
-# ## localip: Show local ip
-# alias localip="ipconfig getifaddr en0"
 
 ## emoji: Show emoji keyboard
 alias emoji="echo 'Control(⌃) + ⌘ + Space'"
@@ -42,3 +39,9 @@ alias reload_gpg_agent='gpgconf --kill gpg-agent'
 
 ## reload_dns: reload the DNS cache
 alias reload_dns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
+
+## awsprofiles: List all locally available AWS profiles
+alias awsprofiles="aws configure list-profiles"
+
+alias awslogin="awsauth"
+

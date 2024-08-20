@@ -1,0 +1,15 @@
+[user]
+	name = Atanas Pamukchiev
+	email = atanas@example.com
+  signingkey = ssh-ed25519
+
+[commit]
+	gpgsign = true
+  template = ~/.gitmessage
+
+[gpg]
+  # program = gpg
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
