@@ -1,7 +1,7 @@
 [user]
 	name = Atanas Pamukchiev
-	email =
-  signingkey =
+	email = atanas@example.com
+  signingkey = ssh-ed25519
 
 [commit]
 	gpgsign = true
