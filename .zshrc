@@ -17,6 +17,12 @@ fi
 # export PATH=$PATH:$GOPATH/bin
 # export PATH=$PATH:$GOROOT/bin
 
+# Configure history to be kept per iterm session and saved on session exit.
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt APPEND_HISTORY
+
 
 # Initialize plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -74,6 +80,7 @@ for f in $HOME/.zsh/*_secret*.zsh; do source $f; done
 source "$HOME/.zsh/20_functions_internal.zsh"
 source "$HOME/.zsh/25_functions.zsh"
 source "$HOME/.zsh/30_aliases.zsh"
+source "$HOME/.zsh/35_completions.zsh"
 source "$HOME/.zsh/40_exports.zsh"
 source "$HOME/.zsh/80_visual.zsh"
 source "$HOME/.zsh/90_final.zsh"

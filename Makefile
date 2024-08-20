@@ -12,7 +12,7 @@ bootstrap: ## Install XCode developer tools and other prerequisites
 	@sh ./etc/scripts/install_command_line_tools.sh
 
 brew: ## Install brew and run brew bundle
-	@sh ./etc/scripts/brew.sh 
+	@sh ./etc/scripts/brew.sh
 	@-$(BREW_BIN) bundle
 
 app_setup: ## Set up all applications
@@ -20,6 +20,7 @@ app_setup: ## Set up all applications
 	@sh ./etc/scripts/asdf_setup.sh
 	@sh ./etc/scripts/code_setup.sh
 	@sh ./etc/scripts/macos_setup.sh
+  @sh ./etc/scripts/gcloud_setup.sh
 
 list: ## Show dot files in this repo
 	@$(foreach val, $(DOTFILES), /bin/ls -dF $(val);)

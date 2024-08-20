@@ -92,6 +92,15 @@ function loadenv() {
   fi
 }
 
+## loadenv: Load the contents of the .env in the current directory into the shell session
+function awsauth() {
+  if [ $# -lt 1 ]; then
+    echo "Usage: $funcstack[1] <sso-session-name> (sparkpost / nest)"
+    return
+  fi
+  aws sso login --sso-session $1 --profile login
+}
+
 ## secret: Encrypt the contents of the input file. Usage: secret <input_file_name>
 function secret () {
   output=~/"${1}".$(date +%s).enc
