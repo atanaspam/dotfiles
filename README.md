@@ -42,3 +42,8 @@ cd dotfiles
 make help
 make all
 ```
+## Ignore files
+You can ignore files on a single machine by doing:
+```
+git update-index --asume-unchanged Brewfile
+```

@@ -2,6 +2,8 @@
 
 eval "$(/opt/homebrew/bin/brew shellenv)" # TODO: Needs to be in every script
 
+softwareupdate --install-rosetta --agree-to-licence
+
 dockutil --no-restart --remove all
 dockutil --no-restart --add "/System/Applications/Launchpad.app"
 dockutil --no-restart --add "/System/Cryptexes/App/System/Applications/Safari.app"
