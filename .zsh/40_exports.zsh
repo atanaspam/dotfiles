@@ -3,9 +3,6 @@ if [[ -f "$HOME/bin" ]]; then
   PATH=$PATH:$HOME/bin
 fi
 
-# GPG agent:
-PATH="/usr/local/opt/gpg-agent/bin:$PATH"
-
 # Adds `poetry` binary, should be added to the end:
 PATH="$HOME/.poetry/bin:$PATH"
 

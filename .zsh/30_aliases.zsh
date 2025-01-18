@@ -43,5 +43,10 @@ alias reload_dns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 ## awsprofiles: List all locally available AWS profiles
 alias awsprofiles="aws configure list-profiles"
 
+## awscreds: Export AWS credentials for the current session as environment variables
+alias awscreds="aws configure export credentials --format env"
+
 alias awslogin="awsauth"
+
+alias gcmsgt='git commit -m "test"'
 

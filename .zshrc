@@ -9,19 +9,20 @@ fi
 ### Custom config start
 #####################################################################
 
-# Configure paths
+# Configure paths (should be done in ~/.zprofile)
 # export PATH=$PATH:$HOME/scripts
-# export GOPATH=$HOME/go
-# export GOROOT=/opt/homebrew/opt/go/libexec
-# export GOBIN=$GOPATH/bin
-# export PATH=$PATH:$GOPATH/bin
-# export PATH=$PATH:$GOROOT/bin
 
 # Configure history to be kept per iterm session and saved on session exit.
 HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-setopt APPEND_HISTORY
+HISTSIZE=500000
+SAVEHIST=500000
+
+setopt extended_history       # record timestamp of command in HISTFILE
+setopt hist_expire_dups_first # delete duplcates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups       # ignore duplicated commands history list
+setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_verify            # show command with history expression to users before running it
+setopt share_history          # share command history data between sessions
 
 
 # Initialize plugins

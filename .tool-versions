@@ -8,10 +8,14 @@ packer system
 pre-commit system
 tflint system
 tfsec system
-nodejs 18.19.0 20.9.0
 pre-commit system
 parliament 1.6.2
 gcloud 487.0.0 # If you update this version, don't forget to update 35_completions.zsh
+golang 1.22.8
+goreleaser 2.4.4
+golangci-lint 1.61.0
+nodejs 18.19.0 20.9.0
+yarn 1.22.22
 
 # Python
 python system

@@ -1,1 +1,2 @@
-setopt HIST_IGNORE_SPACE # Don't add commands starting with newline to the zsh history
+. ~/.asdf/plugins/golang/set-env.zsh
+export GPG_TTY=$(tty)

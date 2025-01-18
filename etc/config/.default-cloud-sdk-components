@@ -1,3 +1,4 @@
 # This file is used to auto-install certain plugins for gcloud. It needs to be present at $HOME/.config/gcloud
 # See https://github.com/jthegedus/asdf-gcloud/blob/00cdf065aaf10f07ff3da8eba59746526e6a93c4/README.md#default-cloud-sdk-components
 gke-gcloud-auth-plugin
+beta

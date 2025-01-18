@@ -18,12 +18,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # https://github.com/asdf-vm/asdf/issues/692#issuecomment-642748733
 autoload -U +X bashcompinit && bashcompinit
 
-export PATH=~/bin:/opt/homebrew/bin:$PATH
-export GOPATH=$HOME
+export GOPATH=$HOME/go
+export PATH=~/bin:/opt/homebrew/bin:$GOPATH/bin:$PATH
 
 autoload -Uz +X compinit && compinit
-
-# # Init GPG agent
-# export GPG_TTY="$(tty)"
-# export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-# gpgconf --launch gpg-agent
