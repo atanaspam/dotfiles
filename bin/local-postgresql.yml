@@ -1,0 +1,13 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:17
+    restart: always
+    shm_size: 256mb
+    environment:
+      POSTGRES_PASSWORD: ThisIsAPassword0
+    volumes:
+      - "~/tmp/pgdata:/var/lib/postgresql/data/pgdata"
+    ports:
+      - "5432:5432"

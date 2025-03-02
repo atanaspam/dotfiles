@@ -5,6 +5,7 @@ fi
 
 # Adds `poetry` binary, should be added to the end:
 PATH="$HOME/.poetry/bin:$PATH"
+PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 # Make sure that asdf Terraform plugin uses the correct file for inferring versions.
 export ASDF_HASHICORP_TERRAFORM_VERSION_FILE="versions.tf"
