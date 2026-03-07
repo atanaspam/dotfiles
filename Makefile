@@ -3,6 +3,7 @@ CANDIDATES := $(wildcard .??*) bin
 EXCLUSIONS := .DS_Store .git .gitmodules .github
 DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 BREW_BIN   := /opt/homebrew/bin/brew
+export PATH := /opt/homebrew/bin:/opt/homebrew/sbin:$(PATH)
 
 .DEFAULT_GOAL := help
 
@@ -16,11 +17,13 @@ brew: ## Install brew and run brew bundle
 	@-$(BREW_BIN) bundle
 
 app_setup: ## Set up all applications
-	@sh ./etc/scripts/get_keys.sh
+	@sh ./etc/scripts/fetch_secrets.sh
+	@sh ./etc/scripts/gpg_setup.sh
 	@sh ./etc/scripts/asdf_setup.sh
 	@sh ./etc/scripts/code_setup.sh
 	@sh ./etc/scripts/macos_setup.sh
-  @sh ./etc/scripts/gcloud_setup.sh
+	@sh ./etc/scripts/gcloud_setup.sh
+	@sh ./etc/scripts/wifi_toggle_setup.sh
 
 list: ## Show dot files in this repo
 	@$(foreach val, $(DOTFILES), /bin/ls -dF $(val);)

@@ -7,7 +7,7 @@ function print_help() {
 # docs:ignore
 function aliases_list() {
   printf "💡 Aliases:\n"
-  grep -E '^## .*$$' ~/.zsh/30_aliases.zsh \
+  grep -E '^## .*$' ~/.zsh/30_aliases.zsh \
   | sort \
   | awk 'BEGIN {FS = ": "}; {printf "\033[36m%-30s\033[0m %s\n", $1, $2}'
 }
@@ -15,7 +15,7 @@ function aliases_list() {
 # docs:ignore
 function functions_list() {
   printf "💡 Functions:\n"
-  grep --no-filename -E '^## .*$$' ~/.zsh/*functions*.zsh \
+  grep --no-filename -E '^## .*$' ~/.zsh/*functions*.zsh \
   | sort \
   | awk 'BEGIN {FS = ": "}; {printf "\033[36m%-30s\033[0m %s\n", $1, $2}'
 }
@@ -27,7 +27,7 @@ function urlencode {
 
 ## urldecode: url decode the input passed in stdin
 function urldecode {
-	python3 -c "import sys; from urllib.parse import unquote; print(unquote(sys.stdin.read()), end='')"
+  python3 -c "import sys; from urllib.parse import unquote; print(unquote(sys.stdin.read()), end='')"
 }
 
 ## checkip: Show current ip addresses
@@ -37,7 +37,7 @@ function checkip() {
   local interfaces=$(networksetup -listallhardwareports | grep "Device: " |  awk -F' ' '{print $2}')
   while IFS= read -r line; do
     local address=$(ipconfig getifaddr $line)
-    if [[ ! ${address} = "" ]]; then
+    if [[ -n ${address} ]]; then
       if [[ $line = "en0" ]]; then
         printf "🛜  ${address}\n"
       else
@@ -45,7 +45,7 @@ function checkip() {
       fi
     fi
   done <<< "$interfaces"
-  if [[ ! ${public} = "" ]]; then
+  if [[ -n ${public} ]]; then
     printf "🌍  ${public}\n"
   fi
 }
@@ -53,18 +53,20 @@ function checkip() {
 ## dynamodb: Spins up and down a local DynamoDB instance
 dynamodb() {
   if [ "$1" = "up" ]; then
-    current_status=$(docker compose -f ~/bin/local-dynamodb-docker-compose.yml ps --format json | jq '.[].State')
+    current_status=$(docker compose -f ~/docker/local-dynamodb-docker-compose.yml ps --format json | jq '.[].State')
     if [ "$current_status" = '"running"' ]; then
       export DYNAMO_ENDPOINT=http://localhost:8000
       echo "DynamoDB is already running. DYNAMO_ENDPOINT еnv var is now set to "http://localhost:8000""
     else
-      docker compose -f ~/bin/local-dynamodb-docker-compose.yml $1 --detach
-      export DYNAMO_ENDPOINT=http://localhost:8000
-      echo "DynamoDB is now available at http://localhost:8000"
-      echo "DynamoDB Admin is available at http://localhost:8001"
+      docker compose -f ~/docker/local-dynamodb-docker-compose.yml $1 --detach
+      if [ "$?" = "0" ]; then
+        export DYNAMO_ENDPOINT=http://localhost:8000
+        echo "DynamoDB is now available at http://localhost:8000"
+        echo "DynamoDB Admin is available at http://localhost:8001"
+      fi
     fi
   elif [ "$1" = "down" ]; then
-    docker compose -f ~/bin/local-dynamodb-docker-compose.yml $1
+    docker compose -f ~/docker/local-dynamodb-docker-compose.yml $1
     echo "DynamoDB has been stopped"
   else
     echo "Usage: $funcstack[1] <up/down>"
@@ -92,6 +94,15 @@ function loadenv() {
   fi
 }
 
+## wifitoggle: Manage the Wi-Fi auto-toggle service. on=auto disable Wi-Fi when ethernet is active
+function wifitoggle() {
+  if [ "$1" = "on" ] || [ "$1" = "off" ]; then
+    executable_wifi-toggle.sh "$1"
+  else
+    echo "Usage: $funcstack[1] <on|off>"
+  fi
+}
+
 ## awsauth: Logs in using AWS SSO and the specified session name
 function awsauth() {
   if [ $# -lt 1 ]; then
@@ -101,14 +112,14 @@ function awsauth() {
   aws sso login --sso-session $1 --profile login
 }
 
-## secret: Encrypt the contents of the input file. Usage: secret <input_file_name>
-function secret () {
+## encrypt: Encrypt the contents of the input file. Usage: encrypt <input_file_name>
+function encrypt () {
   output=~/"${1}".$(date +%s).enc
   gpg --encrypt --armor --output ${output} -r 0x0000 -r 0x0001 -r 0x0002 "${1}" && echo "${1} -> ${output}"
 }
 
-## reveal: Decrypt the contents of the input file. Usage: reveal <input_file_name>
-function reveal () {
-  output=$(echo "${1}" | rev | cut -c16- | rev)
+## decrypt: Decrypt the contents of the input file. Usage: decrypt <input_file_name>
+function decrypt () {
+  output="${1%.*.enc}"
   gpg --decrypt --output ${output} "${1}" && echo "${1} -> ${output}"
 }

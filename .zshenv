@@ -12,5 +12,3 @@ fpath=( \
     ~/.zsh/plugins/zsh-completions(N-/) \
     $fpath \
 )
-
-alias assume="source assume"

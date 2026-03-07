@@ -1,5 +1,5 @@
 # Add bin directory to path
-if [[ -f "$HOME/bin" ]]; then
+if [[ -d "$HOME/bin" ]]; then
   PATH=$PATH:$HOME/bin
 fi
 
@@ -15,6 +15,9 @@ export ASDF_HASHICORP_TERRAFORM_VERSION_FILE="versions.tf"
 export ZSH_DURATION_THRESHOLD=70
 
 export GPG_KEYID=0x946281F6D65DA66F
+
+# Obsidian Vault Location
+export VAULT_LOCATION="$HOME/vaults/personal"
 
 # Usuful stuff for coloring terminal output
 export BOLD=$(tput bold)

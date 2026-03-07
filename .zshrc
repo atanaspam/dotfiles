@@ -9,9 +9,6 @@ fi
 ### Custom config start
 #####################################################################
 
-# Configure paths (should be done in ~/.zprofile)
-# export PATH=$PATH:$HOME/scripts
-
 # Configure history to be kept per iterm session and saved on session exit.
 HISTFILE=~/.zsh_history
 HISTSIZE=500000
@@ -66,7 +63,9 @@ zinit ice \
 zinit light zdharma-continuum/null
 
 zinit fpath -f /opt/homebrew/share/zsh/site-functions
-autoload compinit; compinit # should this go in zprofile?
+# https://github.com/asdf-vm/asdf/issues/692#issuecomment-642748733
+autoload -U +X bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
 
 zinit cdreplay -q
 
