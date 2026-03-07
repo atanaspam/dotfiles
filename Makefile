@@ -3,6 +3,7 @@ CANDIDATES := $(wildcard .??*) bin
 EXCLUSIONS := .DS_Store .git .gitmodules .github
 DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 BREW_BIN   := /opt/homebrew/bin/brew
+export PATH := /opt/homebrew/bin:/opt/homebrew/sbin:$(PATH)
 
 .DEFAULT_GOAL := help
 
@@ -12,15 +13,15 @@ bootstrap: ## Install XCode developer tools and other prerequisites
 	@sh ./etc/scripts/install_command_line_tools.sh
 
 brew: ## Install brew and run brew bundle
-	@sh ./etc/scripts/brew.sh
-	@-$(BREW_BIN) bundle
+	@sh ./etc/scripts/homebrew_setup.sh
 
 app_setup: ## Set up all applications
-	@sh ./etc/scripts/get_keys.sh
-	@sh ./etc/scripts/asdf_setup.sh
-	@sh ./etc/scripts/code_setup.sh
-	@sh ./etc/scripts/macos_setup.sh
-  @sh ./etc/scripts/gcloud_setup.sh
+	@sh ./etc/scripts/fetch_secrets.sh </dev/tty
+	@sh ./etc/scripts/gpg_setup.sh </dev/tty
+	@sh ./etc/scripts/asdf_setup.sh </dev/tty
+	@sh ./etc/scripts/code_setup.sh </dev/tty
+	@sh ./etc/scripts/macos_setup.sh </dev/tty
+	@sh ./etc/scripts/wifi_toggle_setup.sh </dev/tty
 
 list: ## Show dot files in this repo
 	@$(foreach val, $(DOTFILES), /bin/ls -dF $(val);)

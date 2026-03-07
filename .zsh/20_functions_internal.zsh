@@ -8,9 +8,9 @@ function _init_gpg_ssh_agent {
 
 # docs:ignore
 function check_for_pre_commit() {
-  find ./.git/hooks -type f ! -name "*.sample" | grep . > /dev/null
+  find ./.git/hooks -type f ! -name "*.sample" | grep -q .
   hooks_exist=$?
-  find . -type f -name ".pre-commit-config.yaml" | grep . > /dev/null
+  find . -type f -name ".pre-commit-config.yaml" | grep -q .
   pre_commit_file_exists=$?
 
   if [[ $pre_commit_file_exists -eq 0 && $hooks_exist -ne 0 ]]; then
@@ -32,9 +32,8 @@ function _profile_to_account_id() {
 function _ecrauth () {
   if [ $# -ne 2 ]; then
     echo "Usage $funcstack[1] <region> <profile>"
-    exit 1
+    return 1
   fi
   account_id=$(_profile_to_account_id $2)
   aws ecr get-login-password --region $1 --profile $2 | docker login --username AWS --password-stdin $account_id.dkr.ecr.$1.amazonaws.com
 }
-

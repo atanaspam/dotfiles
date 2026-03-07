@@ -2,7 +2,6 @@
 *~
 .zsh/history
 .DS_Store
-bin/docker/dynamodb
 
 #.gnupg
 .gnupg/**
@@ -18,9 +17,12 @@ bin/docker/dynamodb
 !.ssh/config
 
 # bin
-bin/gopls
-bin/staticcheck
+bin/**
+bin/wifi-toggle.sh
 
 # etc
 etc/scripts/backup*
 etc/scripts/restore*
+
+# notes
+NOTES.md

@@ -1,9 +1,7 @@
-version: "3.9"
 name: docker-registry-local
 services:
   registry:
-    image: "registry:3.0.0-rc.3"
+    image: "registry:3"
     container_name: registry
     ports:
       - "5000:5000"
-# Keep this in mind

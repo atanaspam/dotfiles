@@ -11,14 +11,8 @@ export GIT_EDITOR="${EDITOR}"
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
 export PYTHONIOENCODING='UTF-8'
 
-#??
-# Set PATH, MANPATH, etc., for Homebrew.
+# Configure all homebrwew variables
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# https://github.com/asdf-vm/asdf/issues/692#issuecomment-642748733
-autoload -U +X bashcompinit && bashcompinit
-
 export GOPATH=$HOME/go
-export PATH=~/bin:/opt/homebrew/bin:$GOPATH/bin:$PATH
-
-autoload -Uz +X compinit && compinit
+export PATH=~/bin:$GOPATH/bin:$PATH

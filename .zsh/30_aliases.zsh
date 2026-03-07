@@ -22,7 +22,7 @@ alias shrug="echo '¯\_(ツ)_/¯' | pbcopy"
 ## emoji: Show emoji keyboard
 alias emoji="echo 'Control(⌃) + ⌘ + Space'"
 
-## ammend: Ammend the message of the last commit
+## amend: Amend the message of the last commit
 alias amend="git commit --amend -C HEAD"
 
 ## tm: Show ™ sign
