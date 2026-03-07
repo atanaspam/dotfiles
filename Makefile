@@ -16,13 +16,12 @@ brew: ## Install brew and run brew bundle
 	@sh ./etc/scripts/homebrew_setup.sh
 
 app_setup: ## Set up all applications
-	@sh ./etc/scripts/fetch_secrets.sh
-	@sh ./etc/scripts/gpg_setup.sh
-	@sh ./etc/scripts/asdf_setup.sh
-	@sh ./etc/scripts/code_setup.sh
-	@sh ./etc/scripts/macos_setup.sh
-	@sh ./etc/scripts/gcloud_setup.sh
-	@sh ./etc/scripts/wifi_toggle_setup.sh
+	@sh ./etc/scripts/fetch_secrets.sh </dev/tty
+	@sh ./etc/scripts/gpg_setup.sh </dev/tty
+	@sh ./etc/scripts/asdf_setup.sh </dev/tty
+	@sh ./etc/scripts/code_setup.sh </dev/tty
+	@sh ./etc/scripts/macos_setup.sh </dev/tty
+	@sh ./etc/scripts/wifi_toggle_setup.sh </dev/tty
 
 list: ## Show dot files in this repo
 	@$(foreach val, $(DOTFILES), /bin/ls -dF $(val);)

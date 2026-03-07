@@ -47,7 +47,7 @@ zinit load paulirish/git-open
 zinit load bartboy011/cd-reminder
 zinit load zsh-users/zsh-history-substring-search
 zinit ice from'gh-r' as'program'
-zinit light sei40kr/fast-alias-tips-bin
+zinit ice atclone'cargo build --release' atpull'%atclone'
 zinit light sei40kr/zsh-fast-alias-tips
 
 zinit as'completion' for OMZP::{'golang/_golang','pip/_pip','terraform/_terraform'}

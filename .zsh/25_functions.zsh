@@ -97,7 +97,7 @@ function loadenv() {
 ## wifitoggle: Manage the Wi-Fi auto-toggle service. on=auto disable Wi-Fi when ethernet is active
 function wifitoggle() {
   if [ "$1" = "on" ] || [ "$1" = "off" ]; then
-    executable_wifi-toggle.sh "$1"
+    wifi-toggle.sh "$1"
   else
     echo "Usage: $funcstack[1] <on|off>"
   fi

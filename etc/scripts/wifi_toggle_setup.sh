@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SCRIPT="$HOME/bin/executable_wifi-toggle.sh"
+SCRIPT="$HOME/bin/wifi-toggle.sh"
 
 chmod +x "$SCRIPT"
 

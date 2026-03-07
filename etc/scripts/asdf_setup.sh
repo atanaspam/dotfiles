@@ -5,7 +5,6 @@ asdf plugin add golangci-lint https://github.com/hypnoglow/asdf-golangci-lint.gi
 asdf plugin add helm https://github.com/Antiarchitect/asdf-helm.git || true
 asdf plugin add kubectl https://github.com/asdf-community/asdf-kubectl.git || true
 asdf plugin add packer https://github.com/asdf-community/asdf-hashicorp.git || true
-asdf plugin add pre-commit || true
 asdf plugin add python https://github.com/asdf-community/asdf-python.git || true
 asdf plugin add terraform-docs https://github.com/looztra/asdf-terraform-docs || true
 asdf plugin add terraform https://github.com/asdf-community/asdf-hashicorp.git || true

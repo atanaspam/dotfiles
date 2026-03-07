@@ -3,7 +3,7 @@
 softwareupdate --install-rosetta --agree-to-license
 
 dockutil --no-restart --remove all
-dockutil --no-restart --add "/System/Applications/Launchpad.app"
+dockutil --no-restart --add "/System/Applications/Apps.app"
 dockutil --no-restart --add "/System/Cryptexes/App/System/Applications/Safari.app"
 dockutil --no-restart --add "/System/Applications/Messages.app"
 dockutil --no-restart --add "/System/Applications/Mail.app"
@@ -47,3 +47,11 @@ defaults write -g InitialKeyRepeat -int 20 # default is 30
 
 # Keyboard: How quickly are key presses repeated on key hold
 defaults write -g KeyRepeat -int 2
+
+# Tap to click
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+
+# Require password immediately after screen lock
+defaults write com.apple.screensaver askForPassword -int 1
+defaults write com.apple.screensaver askForPasswordDelay -int 0
