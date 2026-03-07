@@ -35,8 +35,10 @@ My dotfiles roughly contain the following goodies
      - An attachment whose filename starts with `gpg` (your public key)
      - A custom field named `KeyId` containing your GPG key ID
    - An item named `Spotify` with custom fields `Client ID` and `Client Secret`
-2. Download the repo to a location that you won't accidentally delete ;) For me that's:
+2. Download the repo to a location that you won't accidentally delete. For me that's:
 ```bash
+mkdir ~/projects
+# Git clone this repo or download its contents from the github UI
 cd ~/projects && git clone git@github.com:atanaspam/dotfiles.git
 ```
 

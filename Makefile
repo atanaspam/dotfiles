@@ -13,8 +13,7 @@ bootstrap: ## Install XCode developer tools and other prerequisites
 	@sh ./etc/scripts/install_command_line_tools.sh
 
 brew: ## Install brew and run brew bundle
-	@sh ./etc/scripts/brew.sh
-	@-$(BREW_BIN) bundle
+	@sh ./etc/scripts/homebrew_setup.sh
 
 app_setup: ## Set up all applications
 	@sh ./etc/scripts/fetch_secrets.sh
