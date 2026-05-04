@@ -17,6 +17,7 @@ asdf plugin add minikube https://github.com/alvarobp/asdf-minikube.git || true
 asdf plugin add argocd https://github.com/beardix/asdf-argocd.git || true
 asdf plugin add poetry https://github.com/asdf-community/asdf-poetry.git || true
 asdf plugin add bun https://github.com/cometkim/asdf-bun.git || true
+asdf plugin add azure-cli https://github.com/EcoMind/asdf-azure-cli || true
 
 
 asdf install
