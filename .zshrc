@@ -92,4 +92,3 @@ source "$HOME/.zsh/90_final.zsh"
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/atanaspamukchiev/.lmstudio/bin"
 # End of LM Studio CLI section
-

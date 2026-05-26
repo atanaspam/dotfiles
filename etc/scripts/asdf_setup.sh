@@ -2,6 +2,7 @@
 
 asdf plugin add golang https://github.com/asdf-community/asdf-golang.git || true
 asdf plugin add golangci-lint https://github.com/hypnoglow/asdf-golangci-lint.git || true
+asdf plugin add gcloud https://github.com/jthegedus/asdf-gcloud || true
 asdf plugin add helm https://github.com/Antiarchitect/asdf-helm.git || true
 asdf plugin add kubectl https://github.com/asdf-community/asdf-kubectl.git || true
 asdf plugin add packer https://github.com/asdf-community/asdf-hashicorp.git || true
