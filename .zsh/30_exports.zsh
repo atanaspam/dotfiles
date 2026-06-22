@@ -3,6 +3,9 @@ if [[ -d "$HOME/bin" ]]; then
   PATH=$PATH:$HOME/bin
 fi
 
+# Not required anymore
+# export GOPATH=$HOME/go
+
 # Make sure the ASDF tools are resolved first:
 export ASDF_DATA_DIR="$HOME/.asdf"
 
@@ -18,7 +21,7 @@ export GPG_KEYID=0x946281F6D65DA66F
 
 # Obsidian Vaults
 export VAULTS_LOCATION="$HOME/vaults"
-export DEFAULT_VAULT="personal"
+export DEFAULT_VAULT="i3d"
 export VAULT_LOCATION="$VAULTS_LOCATION/$DEFAULT_VAULT"
 
 # Dotfiles repo location (used by scripts and aliases that reference repo-relative paths)
@@ -34,6 +37,9 @@ export MAGENTA=$(tput setaf 5)
 export RESET=$(tput sgr0)
 
 export AWS_PROFILE=""
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:~/.lmstudio/bin"
 
 # Deduplicate PATH entries
 typeset -U PATH

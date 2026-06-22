@@ -14,5 +14,4 @@ export PYTHONIOENCODING='UTF-8'
 # Configure all homebrwew variables
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-export GOPATH=$HOME/go
 export PATH=~/bin:$GOPATH/bin:$PATH

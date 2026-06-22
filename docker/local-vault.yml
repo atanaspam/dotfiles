@@ -1,0 +1,23 @@
+version: '2.3'
+services:
+  vault-dev:
+    image: hashicorp/vault:1.21.4
+    restart: unless-stopped
+    container_name: vault
+    ports:
+      - "8200:8200"
+    command: [ 'vault', 'server', '-config=/vault/config' ]
+    environment:
+      VAULT_ADDR: "http://127.0.0.1:8200"
+      VAULT_API_ADDR: "http://127.0.0.1:8200"
+      VAULT_DEV_ROOT_TOKEN_ID: "myroot"
+      VAULT_LOCAL_CONFIG: '{"backend": {"file": {"path": "/vault/file"}}, "default_lease_ttl": "168h", "max_lease_ttl": "720h"}'
+      VAULT_SUPPLEMENTAL_CONFIG: '{"ui":true, "listener": {"tcp":{"address": "0.0.0.0:8200", "tls_disable": 1}}}'
+    volumes:
+      - vault-data:/vault/file
+    cap_add:
+      - IPC_LOCK
+
+volumes:
+  vault-data:
+
