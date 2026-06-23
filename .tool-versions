@@ -1,23 +1,24 @@
 # reference to possible versions: https://asdf-vm.com/manage/versions.html
 
+# Languages
+python 3.12.8
+golang 1.22.8
+
+bun 1.2.22
 terraform 1.5.7
+packer 1.15.0
+vault 1.21.4
 awscli system
 azure-cli system
 kubectl 1.31.6
-packer 1.15
 pre-commit system
-tflint system
-tfsec system
+tflint 0.63.1
 parliament 1.6.2
-gcloud 559.0.0 # If you update this version, don't forget to update 35_completions.zsh
-golang 1.22.8
+gcloud 559.0.0
 goreleaser 2.7.0
 golangci-lint 2.11.1
 nodejs 24.0.1 20.9.0
 yarn 1.22.22
 minikube 1.35.0
 poetry 2.1.3
-#helm 4.1.0 # No system level helm command
-
-# Python
-python 3.12.8
+uv 0.11.21

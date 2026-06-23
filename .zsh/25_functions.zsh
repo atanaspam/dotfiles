@@ -50,11 +50,30 @@ function checkip() {
   fi
 }
 
+## ai: Manage the local AI stack (Open WebUI + Ollama + SearXNG). Usage: ai <up|down>
+function ai() {
+  local compose_file=~/docker/local-ai.yml
+  if [ "$1" = "up" ]; then
+    curl -sf http://localhost:11434 &>/dev/null || brew services start ollama
+    if docker compose -f "$compose_file" ps --status running --quiet 2>/dev/null | grep -q .; then
+      echo "AI stack is already running. Open WebUI is available at http://localhost:3030"
+    else
+      docker compose -f "$compose_file" up --detach && \
+        echo "Open WebUI is available at http://localhost:3030"
+    fi
+  elif [ "$1" = "down" ]; then
+    docker compose -f "$compose_file" down --remove-orphans
+    brew services list | grep -q "ollama.*started" && brew services stop ollama 2>/dev/null
+    echo "AI stack has been stopped"
+  else
+    echo "Usage: $funcstack[1] <up|down>"
+  fi
+}
+
 ## dynamodb: Spins up and down a local DynamoDB instance
 dynamodb() {
   if [ "$1" = "up" ]; then
-    current_status=$(docker compose -f ~/docker/local-dynamodb-docker-compose.yml ps --format json | jq '.[].State')
-    if [ "$current_status" = '"running"' ]; then
+    if docker compose -f ~/docker/local-dynamodb-docker-compose.yml ps --status running --quiet 2>/dev/null | grep -q .; then
       export DYNAMO_ENDPOINT=http://localhost:8000
       echo "DynamoDB is already running. DYNAMO_ENDPOINT еnv var is now set to "http://localhost:8000""
     else
@@ -97,7 +116,7 @@ function loadenv() {
 ## wifitoggle: Manage the Wi-Fi auto-toggle service. on=auto disable Wi-Fi when ethernet is active
 function wifitoggle() {
   if [ "$1" = "on" ] || [ "$1" = "off" ]; then
-    wifi-toggle.sh "$1"
+    wifi_toggle.sh "$1"
   else
     echo "Usage: $funcstack[1] <on|off>"
   fi

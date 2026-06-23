@@ -54,8 +54,14 @@ make all
 > **Note:** `fetch_secrets.sh` will interactively ask whether to connect to Bitwarden. You can skip it and run the script manually later.
 
 
-## Ignore files
-You can ignore files on a single machine by doing:
+## Files with local changes that should not go back upstream
+
+For files where you know there will be local changes (like temporary environment settings) which should not make it back to the template repo, you can use the command below:
+```bash
+git update-index --skip-worktree Brewfile
 ```
-git update-index --assume-unchanged Brewfile
+This ensures that any local changes to this file do not show up in the git diff and that a git pull will not overwrite them.
+Revert this by running:
+```bash
+git update-index --no-skip-worktree .ssh/config
 ```

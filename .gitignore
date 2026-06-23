@@ -16,10 +16,6 @@
 .ssh/**
 !.ssh/config
 
-# bin
-bin/**
-bin/wifi-toggle.sh
-
 # etc
 etc/scripts/backup*
 etc/scripts/restore*
